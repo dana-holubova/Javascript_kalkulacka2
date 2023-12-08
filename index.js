@@ -1,15 +1,24 @@
 const display = document.querySelector(".display")
 const keypad = document.querySelector(".keypad")
 
+let digitsNumber = 0
+console.log('digitsNumber1: ' + digitsNumber)
+
 const handleDigitClick = (e) => {
-const key = e.target.textContent
-display.textContent += key
+    const key = e.target.textContent
+    display.textContent += key
+    digitsNumber = display.textContent.length
+
+    //správný počet číslic
+    console.log('digitsNumber funkce2: ' + digitsNumber)
+    //return digitsNumber
 }
 
-//console.log('display content2: ' + display.textContent)
-//console.log('display length2: ' + display.textContent.length)
+//nefunguje - měl by se vypisovat aktuální počet číslic
+console.log(`digitsNumber2: ${digitsNumber}`)
 
-//nefunguje - nenačítá to aktuální hodnoty z displeje
-if (display.textContent.length < 10) {
-keypad.addEventListener("click", handleDigitClick)   
+if (digitsNumber < 3) {
+    keypad.addEventListener("click", handleDigitClick)
 }
+
+else { document.querySelector("#message").textContent = "Číslic je víc než 10" }
