@@ -17,7 +17,7 @@ const handleDigitClick = (e) => {
 //nefunguje - měl by se vypisovat aktuální počet číslic
 console.log(`digitsNumber2: ${digitsNumber}`)
 
-if (digitsNumber < 3) {
+if (digitsNumber < 10) {
     keypad.addEventListener("click", handleDigitClick)
 }
 
