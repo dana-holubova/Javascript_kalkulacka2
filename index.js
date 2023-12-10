@@ -2,23 +2,21 @@ const display = document.querySelector(".display")
 const keypad = document.querySelector(".keypad")
 
 let digitsNumber = 0
-console.log('digitsNumber1: ' + digitsNumber)
 
 const handleDigitClick = (e) => {
-    const key = e.target.textContent
-    display.textContent += key
-    digitsNumber = display.textContent.length
+    if (digitsNumber < 9) {
+        const key = e.target.textContent
+        display.textContent += key
+        digitsNumber = display.textContent.length
+        if (digitsNumber > 1 && display.textContent[0] === "0") {
+            display.textContent = display.textContent.slice(1)
+        }
+    }
 
-    //správný počet číslic
-    console.log('digitsNumber funkce2: ' + digitsNumber)
-    //return digitsNumber
+    else {
+        document.querySelector('#message').textContent = 'Maximální povolený počet číslic je 9.';
+    }
+
 }
 
-//nefunguje - měl by se vypisovat aktuální počet číslic
-console.log(`digitsNumber2: ${digitsNumber}`)
-
-if (digitsNumber < 10) {
-    keypad.addEventListener("click", handleDigitClick)
-}
-
-else { document.querySelector("#message").textContent = "Číslic je víc než 10" }
+keypad.addEventListener("click", handleDigitClick)
